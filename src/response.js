@@ -19,7 +19,13 @@ function getString (data) {
   }
 }
 
-
+function addData (stream, data) {
+  if (Buffer.isBuffer(data) || typeof data === 'string' || data instanceof Uint8Array) {
+    stream[BODY].push(Buffer.from(data))
+  } else {
+    throw new Error(`response.write() of unexpected type: ${typeof data}`)
+  }
+}
 module.exports = class ServerlessResponse extends http.ServerResponse {
   static from (res) {
     const response = new ServerlessResponse(res)
