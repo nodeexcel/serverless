@@ -137,7 +137,15 @@ const apiGatewayV1Event = {
   isBase64Encoded: false
 }
 
+function makeApiGatewayV1Event (values = {}) {
+  const baseEvent = clone(apiGatewayV1Event)
+  const mergedEvent = mergeDeep(baseEvent, values)
 
+  if (!mergedEvent.pathParameters.proxy) mergedEvent.pathParameters.proxy = values.path.replace(/^\//, '')
+  if (!mergedEvent.requestContext.path) mergedEvent.requestContext.path = `${mergedEvent.requestContext.stage}${mergedEvent.path}`
+
+  return mergedEvent
+}
 function makeApiGatewayV1Response (values = {}) {
   const baseResponse = {
     body: '',
@@ -155,5 +163,6 @@ function makeApiGatewayV1Response (values = {}) {
 }
 
 module.exports = {
+  makeApiGatewayV1Event,
   makeApiGatewayV1Response
 }
