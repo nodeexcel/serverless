@@ -76,7 +76,17 @@ function makeApiGatewayV2Event (values = {}) {
   return mergedEvent
 }
 
+function convertMultiValueHeadersToHeaders ({ multiValueHeaders }) {
+  const headers = {}
 
+  if (!multiValueHeaders) return headers
+
+  Object.entries(multiValueHeaders).forEach(([key, value]) => {
+    headers[key] = value.join(',')
+  })
+
+  return headers
+}
 
 function makeApiGatewayV2Response (values = {}, {
   shouldConvertContentLengthToInt = false
