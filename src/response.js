@@ -19,7 +19,13 @@ function getString (data) {
   }
 }
 
-
+function addData (stream, data) {
+  if (Buffer.isBuffer(data) || typeof data === 'string' || data instanceof Uint8Array) {
+    stream[BODY].push(Buffer.from(data))
+  } else {
+    throw new Error(`response.write() of unexpected type: ${typeof data}`)
+  }
+}
 module.exports = class ServerlessResponse extends http.ServerResponse {
   static from (res) {
     const response = new ServerlessResponse(res)
@@ -48,6 +54,31 @@ module.exports = class ServerlessResponse extends http.ServerResponse {
     return this[HEADERS]
   }
 
+  setHeader (key, value) {
+    if (this._wroteHeader) {
+      this[HEADERS][key] = value
+    } else {
+      super.setHeader(key, value)
+    }
+  }
+
+  writeHead (statusCode, reason, obj) {
+    const headers = typeof reason === 'string'
+      ? obj
+      : reason
+
+    for (const name in headers) {
+      this.setHeader(name, headers[name])
+
+      if (!this._wroteHeader) {
+        // we only need to initiate super.headers once
+        // writeHead will add the other headers itself
+        break
+      }
+    }
+
+    super.writeHead(statusCode, reason, obj)
+  }
 
   constructor ({ method }) {
     super({ method })

@@ -9,4 +9,5 @@ module.exports = {
   moduleNameMapper: {
     '\\.(css|less|scss|sass|less)$': 'identity-obj-proxy',
   },
-}
+};
+

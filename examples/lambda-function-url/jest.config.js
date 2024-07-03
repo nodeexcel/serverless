@@ -6,4 +6,5 @@ process.env.USER_TABLE = 'UserTable'
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
-}
+};
+

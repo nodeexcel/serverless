@@ -1,46 +1,37 @@
+Starting a new software project? Discover Code a comprehensive Full Stack App Generator that provides a complete AWS Serverless project with source code tailored to your data model.
 
-<h2 align="center">Serverless Express by</h1>
-<p align="center">
-  <a href="https://codegenie.codes">
-    <img src="https://raw.githubusercontent.com/CodeGenieApp/serverless-express/mainline/code-genie-logo-gh.jpg" alt="Code Genie Logo">
-  </a>
-</p>
-<p width=200>
-
-Starting a new software project? Check out Code Genie - a <a href="https://codegenie.codes">Full Stack App Generator</a> that delivers a complete AWS Serverless project with source code, based on your data model. Including:
-
-1. A React Next.js Web App hosted on Amplify Hosting
-1. Serverless Express REST API running on API Gateway and Lambda
-1. Cognito User Pools for Identity/Authentication
-1. DynamoDB Database
-1. Cloud Development Kit (CDK) for Infrastructure as Code (IAC)
-1. Continuous Integration/Delivery (CI/CD) with GitHub Actions
-</p>
+1. A React Next.js web application hosted on AWS Amplify
+2. Serverless REST API powered by API Gateway and AWS Lambda
+3. Identity and authentication managed by Amazon Cognito
+4. Data storage using Amazon DynamoDB
+5. Infrastructure as Code (IaC) with AWS Cloud Development Kit (CDK)
+6. Continuous Integration/Continuous Deployment (CI/CD) through GitHub Actions
 
 # Serverless Express
 
 <p align="center">
-  <a aria-label="NPM version" href="https://www.npmjs.com/package/@codegenie/serverless-express">
-    <img alt="" src="https://img.shields.io/npm/v/@codegenie/serverless-express.svg?style=for-the-badge&labelColor=000000">
+  <a aria-label="NPM version" href="https://www.npmjs.com/package/@nodeexcel/serverless-express">
+    <img alt="NPM Version" src="https://img.shields.io/npm/v/@nodeexcel/serverless-express.svg?style=for-the-badge&labelColor=0d1117">
   </a>
-  <a aria-label="License" href="https://github.com/CodeGenieApp/serverless-express/blob/mainline/LICENSE">
-    <img alt="" src="https://img.shields.io/npm/l/@codegenie/serverless-express.svg?style=for-the-badge&labelColor=000000">
+  <a aria-label="License" href="https://github.com/nodeexcelApp/serverless-express/blob/mainline/LICENSE">
+    <img alt="License" src="https://img.shields.io/npm/l/@nodeexcel/serverless-express.svg?style=for-the-badge&labelColor=0d1117">
   </a>
-  <a aria-label="Number of Downloads" href="https://www.npmjs.com/package/@codegenie/serverless-express">
-    <img alt="" src="https://img.shields.io/npm/dm/@vendia/serverless-express.svg?style=for-the-badge&labelColor=000000">
+  <a aria-label="Number of Downloads" href="https://www.npmjs.com/package/@nodeexcel/serverless-express">
+    <img alt="Downloads" src="https://img.shields.io/npm/dm/@nodeexcel/serverless-express.svg?style=for-the-badge&labelColor=0d1117">
   </a>
-  <a aria-label="Contributor Covenant" href="CODE_OF_CONDUCT.md">
-    <img alt="" src="https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg?style=for-the-badge&labelColor=000000">
+  <a aria-label="Contributor Covenant" href="NODE_EXCEL.md">
+    <img alt="Contributor Covenant" src="https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg?style=for-the-badge&labelColor=0d1117">
   </a>
-  <a aria-label="Made by Code Genie" href="https://codegenie.codes">
-    <img src="https://img.shields.io/badge/MADE%20BY%20Code%20Genie-000000.svg?style=for-the-badge&logo=Code%20Genie&labelColor=000">
+  <a aria-label="Made by Node Excel" href="https://nodeexcel.codes">
+    <img alt="Made by Node Excel" src="https://img.shields.io/badge/MADE%20BY%20Code%20Genie-0d1117.svg?style=for-the-badge&logo=Code%20Genie&labelColor=0d1117">
   </a>
 </p>
+
 
 Run REST APIs and other web applications using your existing [Node.js](https://nodejs.org/) application framework (Express, Koa, Hapi, Sails, etc.), on top of [AWS Lambda](https://aws.amazon.com/lambda/) and [Amazon API Gateway](https://aws.amazon.com/api-gateway/) or [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/).
 
 ```bash
-npm install @codegenie/serverless-express
+npm install @nodeexcel/serverless-express
 ```
 
 ## Quick Start/Example
@@ -52,7 +43,7 @@ Want to get up and running quickly? [Check out our basic starter example](exampl
 - [Serverless Application Model (SAM)](https://github.com/awslabs/serverless-application-model)/[CloudFormation](https://aws.amazon.com/cloudformation/aws-cloudformation-templates/) template
 - Helper scripts to configure, deploy, and manage your application
 
-If you want to migrate an existing application to AWS Lambda, it's advised to get the minimal example up and running first, and then copy your application source in.
+If you're migrating an existing application to AWS Lambda, it's recommended to start with a simple, working example and then gradually integrate your application's code.
 
 ## AWS
 
@@ -62,19 +53,19 @@ The only AWS Lambda specific code you need to write is a simple handler like bel
 
 ```js
 // lambda.js
-const serverlessExpress = require('@codegenie/serverless-express')
+const serverlessExpress = require('@nodeexcel/serverless-express')
 const app = require('./app')
 exports.handler = serverlessExpress({ app })
 ```
 
 ### Async setup Lambda handler
 
-If your application needs to perform some common bootstrap tasks such as connecting to a database before the request is forward to the API, you can use the following pattern (also available in [this example](https://github.com/CodeGenieApp/serverless-express/blob/mainline/examples/basic-starter-api-gateway-v2/src/lambda-async-setup.js)):
+If your application needs to perform some common bootstrap tasks such as connecting to a database before the request is forward to the API, you can use the following pattern (also available in [this example](https://github.com/nodeexcelApp/serverless-express/blob/mainline/examples/basic-starter-api-gateway-v2/src/lambda-async-setup.js)):
 
 ```js
 // lambda.js
 require('source-map-support/register')
-const serverlessExpress = require('@codegenie/serverless-express')
+const serverlessExpress = require('@nodeexcel/serverless-express')
 const app = require('./app')
 
 let serverlessExpressInstance
@@ -109,7 +100,7 @@ The only Azure Function specific code you need to write is a simple `index.js` a
 
 ```js
 // index.js
-const serverlessExpress = require('@codegenie/serverless-express')
+const serverlessExpress = require('@nodeexcel/serverless-express')
 const app = require('./app')
 const cachedServerlessExpress = serverlessExpress({ app })
 
@@ -152,13 +143,14 @@ The _out-binding_ parameter `"name": "$return"` is important for Serverless Expr
 1. Node.js 12+
 1. Improved support for custom domain names
 
-See [UPGRADE.md](UPGRADE.md) to upgrade from aws-serverless-express and @codegenie/serverless-express 3.x
+See [UPGRADE.md](UPGRADE.md) to upgrade from aws-serverless-express and @nodeexcel/serverless-express 3.x
 
 ## API
 
 ### binarySettings
 
-Determine if the response should be base64 encoded before being returned to the event source, for example, when returning images or compressed files. This is necessary due to API Gateway and other event sources not being capable of handling binary responses directly. The event source is then responsible for turning this back into a binary format before being returned to the client.
+
+If your response needs to be base64 encoded before being returned to the event source, such as when returning images or compressed files, ensure you handle this due to API Gateway and other event sources' limitations with binary responses. The event source will then convert this back into binary format before delivering it to the client.
 
 By default, this is determined based on the `content-encoding` and `content-type` headers returned by your application. If you need additional control over this, you can specify `binarySettings`.
 
@@ -184,7 +176,7 @@ ExpressApi:
 
 ### resolutionMode (default: `'PROMISE'`)
 
-Lambda supports three methods to end the execution and return a result: context, callback, and promise. By default, serverless-express uses promise resolution, but you can specify 'CONTEXT' or 'CALLBACK' if you need to change this. If you specify 'CALLBACK', then `context.callbackWaitsForEmptyEventLoop = false` is also set for you.
+Lambda supports three methods to end the execution and return a result: context, callback, and promise. By default, serverless-express uses promise resolution, but you can specify 'CONTEXT' or 'CALLBACK' if you need to change this. If you specify 'CALLBACK', then `context.callbackWaitsForEmptyEventLoop = false` is also set for you .
 
 ```js
 serverlessExpress({
@@ -347,7 +339,7 @@ Provide a custom `log` object with `info`, `debug` and `error` methods. For exam
 This package exposes a function to easily get the `event` and `context` objects Lambda receives from the event source.
 
 ```js
-const { getCurrentInvoke } = require('@codegenie/serverless-express')
+const { getCurrentInvoke } = require('@nodeexcel/serverless-express')
 app.get('/', (req, res) => {
   const { event, context } = getCurrentInvoke()
 
@@ -375,11 +367,8 @@ app.get('/', (req, res) => {
 
 # AWS Serverless Express is now under the stewardship of Vendia
 
-On 11/30, the AWS Serverless Express library moved from AWS to [Vendia](https://github.com/CodeGenieApp/serverless-express) and will be rebranded to `@codegenie/serverless-express`. Similarly, the [`aws-serverless-express` NPM package](https://www.npmjs.com/package/aws-serverless-express) will be deprecated in favor of [@codegenie/serverless-express](https://www.npmjs.com/package/@codegenie/serverless-express). 
+On 11/30, the AWS Serverless Express library moved from AWS to [Vendia](https://github.com/nodeexcelApp/serverless-express) and will be rebranded to `@nodeexcel/serverless-express`. Similarly, the [`aws-serverless-express` NPM package](https://www.npmjs.com/package/aws-serverless-express) will be deprecated in favor of [@nodeexcel/serverless-express](https://www.npmjs.com/package/@nodeexcel/serverless-express). 
 
-[Brett Andrews](https://github.com/brettstack), the original creator of the Serverless Express library, will continue maintaining the repository and give it the attention and care it deserves. At the same time, we will be looking for additional contributors to participate in the development and stewardship of the Serverless Express library. AWS and the [SAM team](https://github.com/aws/aws-sam-cli) will remain involved in an administrative role alongside Vendia, Brett, and the new maintainers that will join the project.
+[Brett Andrews](https://github.com/brettstack), The original creator of the Serverless Express library will continue maintaining the repository, ensuring it receives the necessary attention and care. Additionally, we are seeking more contributors to help with the development and stewardship of the Serverless Express library. AWS and the [SAM team](https://github.com/aws/aws-sam-cli) will remain involved in an administrative role alongside Vendia, Brett, and the new maintainers that will join the project.
 
-We believe this is the best course of action to ensure that customers using this library get the best possible support in the future. To learn more about this move or become a maintainer of the new Serverless Express library, reach out to us through a GitHub issue on this repository. 
-
-Best,
-  The AWS Serverless team, Brett & the Vendia team
+We consider this the optimal course of action to ensure that customers utilizing this library receive exceptional support going forward. For further details on this transition or to express interest in becoming a maintainer of the new Serverless Express library, please contact us by opening a GitHub issue in this repository.
