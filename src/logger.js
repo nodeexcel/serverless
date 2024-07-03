@@ -8,11 +8,11 @@ const lazyPrint = value => {
 
 const logLevels = {
   debug: [
-    ['debug', 'debug'],
-    ['verbose', 'debug'],
-    ['info', 'info'],
-    ['error', 'error'],
-    ['warn', 'warn']
+    ['debug','debug'],
+    ['verbose','debug'],
+    ['info','info'],
+    ['error','error'],
+    ['warn','warn']
   ],
   verbose: [
     ['verbose', 'debug'],
